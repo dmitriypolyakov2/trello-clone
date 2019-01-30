@@ -32,6 +32,16 @@ module.exports = {
                     loader: 'babel-loader',
                 }
             },
+            {
+                //регулярное выражене для поиска файлов
+                test:/\.css$/,
+                //игнорируем директорию
+                exclude: /node_modules/,
+                //что используем если нашли файл
+                use: {
+                    loader: ['style-loader','css-loader']
+                }
+            },
         ]
     },
     resolve: {
