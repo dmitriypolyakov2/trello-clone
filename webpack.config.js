@@ -21,16 +21,14 @@ module.exports = {
     },
     //используемые модули
     module: {
-        rules :[
+        rules: [
             {
                 //регулярное выражене для поиска файлов
                 test:/\.jsx?$/,
                 //игнорируем директорию
                 exclude: /node_modules/,
                 //что используем если нашли файл
-                use: {
-                    loader: 'babel-loader',
-                }
+                use: 'babel-loader'
             },
             {
                 //регулярное выражене для поиска файлов
@@ -38,10 +36,8 @@ module.exports = {
                 //игнорируем директорию
                 exclude: /node_modules/,
                 //что используем если нашли файл
-                use: {
-                    loader: ['style-loader','css-loader']
-                }
-            },
+                use: ['style-loader', 'css-loader']
+            }
         ]
     },
     resolve: {
