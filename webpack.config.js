@@ -1,13 +1,14 @@
 //подключаем модули
-const path = require('path'),
-HTMLplugin = require('html-webpack-plugin');
+const path = require('path');
+const HTMLplugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 //экспортируем настройки вэбпак модуля
 module.exports = {
     //точка входа
     entry:{
         //именно так потому, что этот метод сам ставит нужный слэш
         //в линуксе слэш в обратную сторону
-        main: path.resolve(__dirname, 'src', 'App.js'),
+        main: path.resolve(__dirname, 'src', 'index.js'),
     },
     //куда помещаем сборку
     output: {
@@ -18,6 +19,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         contentBase: "./dist",
+        hot: true,
     },
     //используемые модули
     module: {
@@ -50,5 +52,6 @@ module.exports = {
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),
+        new webpack.HotModuleReplacementPlugin(),
     ],
 };

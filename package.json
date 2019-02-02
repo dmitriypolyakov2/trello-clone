@@ -1,12 +1,12 @@
 {
   "name": "react",
   "version": "1.0.0",
-  "main": "App.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development --open --watch"
+    "start": "webpack-dev-server --mode development --open"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "react-hot-loader": "^4.6.5",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
     "style-loader": "^0.23.1",
