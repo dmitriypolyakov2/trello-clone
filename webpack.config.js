@@ -1,7 +1,6 @@
 //подключаем модули
 const path = require('path');
 const HTMLplugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 //экспортируем настройки вэбпак модуля
 module.exports = {
     //точка входа
@@ -19,7 +18,6 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         contentBase: "./dist",
-        hot: true,
     },
     //используемые модули
     module: {
@@ -52,6 +50,5 @@ module.exports = {
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),
-        new webpack.HotModuleReplacementPlugin(),
     ],
 };
