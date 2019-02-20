@@ -7,6 +7,10 @@ import {isLogged} from './actions/authActions'
 import Header from './components/Header'
 import LoginPage from './pages/LoginPage'
 
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import Page from './components/Page'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -29,18 +33,21 @@ class App extends React.Component {
     
     
     render() {
+        console.log(<Route  />) 
         return (
-            <>
+            <div>
             <Header brand="Task Manager *Beta"/>
                 { 
                     !this.props.authMeta.isLogged ? 
-                    <BrowserRouter>
-                        <LoginPage/>
-                    </BrowserRouter>
+                    <Switch>
+                        <Route exact path='/' component={LoginPage}/>
+                        <Route path='/registration' component={SignUp}/>
+                        <Route component={Page}/>
+                    </Switch>
                     :
                     <div></div>
                 }
-            </>
+            </div>
         )
     } 
     

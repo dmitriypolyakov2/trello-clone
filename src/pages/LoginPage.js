@@ -1,21 +1,23 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom'
 
-import Login from '../components/Login';
-import SignUp from '../components/SignUp';
-import PageNotFound from '../components/PageNotFound';
+import React from 'react'
+import {Link} from 'react-router-dom'
 
-
-export default class LoginPage extends React.Component {
+class Login extends React.Component {
     render() {
-        return (
-            <div className='container'>
-                <Switch>
-                    <Route exact path='/' component={Login}/>
-                    <Route path='/registration' component={SignUp}/>
-                    <Route path='*' component={PageNotFound}/>
-                </Switch>
-            </div>
-        );
+        return(
+            <form className="form-signin" role="form">
+                <h2 className="form-signin-heading">Please sign in</h2>
+                <input type="email" className="form-control" placeholder="Email address" required autoFocus/>
+                <input type="password" className="form-control" placeholder="Password" required/>
+                <label className="checkbox">
+                    <input type="checkbox" value="remember-me"/> Remember me 
+                </label>
+                <Link to='/repassword'> Забыли пароль?</Link>
+                <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <Link to='/registration'>Зарегистрироваться</Link>
+            </form>
+        )
     }
 }
+
+export default Login
