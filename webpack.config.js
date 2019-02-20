@@ -34,7 +34,7 @@ module.exports = {
                 //регулярное выражене для поиска файлов
                 test:/\.css$/,
                 //игнорируем директорию
-                exclude: /node_modules/,
+                //exclude: /node_modules/,
                 //что используем если нашли файл
                 use: ['style-loader', 'css-loader']
             }
