@@ -1,56 +1,33 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
-import {BrowserRouter} from 'react-router-dom'
-import { connect } from 'react-redux'
 
-import {isLogged} from './actions/authActions'
 import Header from './components/Header'
-import LoginPage from './pages/LoginPage'
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import PageNotFound from './components/PageNotFound';
+import AuthRoute from './components/AuthRoute';
+import MainPage from './pages/MainPage'
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props)
 
-        this.state = {
-            result: ''
-        }
-
-        this.isAuthenticated = this.isAuthenticated.bind(this)
-    }
-
-    componentDidMount() { 
-        this.props.dispatch(isLogged())
-     }
-    
-    isAuthenticated() {
-
-    }
     
     
     render() {
         return (
             <>
             <Header brand="Task Manager *Beta"/>
-                { 
-                    !this.props.authMeta.isLogged ? 
-                    <BrowserRouter>
-                        <LoginPage/>
-                    </BrowserRouter>
-                    :
-                    <div></div>
-                }
+            <AuthRoute path="/" component={Login} redirectTo="/login" />
+            <Switch>
+                <Route exact path='/' component={MainPage}/>
+                <Route path='/login' component={Login}/>
+                <Route path='/registration' component={SignUp}/>
+                <Route path='*' component={PageNotFound}/>
+            </Switch>
             </>
         )
     } 
     
 }
 
-
-function mapStateToProps(state) {
-   return {
-        authMeta: state.authMeta
-    }
-}
-
-export default connect(mapStateToProps)(App)
+export default App
